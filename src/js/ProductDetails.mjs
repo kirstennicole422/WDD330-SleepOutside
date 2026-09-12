@@ -21,9 +21,9 @@ export default class ProductDetails {
   }
 
   addProductToCart() {
-    const cartItems = getLocalStorage("so-cart") || [];
+    const cartItems = getLocalStorage("customer-cart") || [];
     cartItems.push(this.product);
-    setLocalStorage("so-cart", cartItems);
+    setLocalStorage("customer-cart", cartItems);
   }
 
   renderProductDetails() {
