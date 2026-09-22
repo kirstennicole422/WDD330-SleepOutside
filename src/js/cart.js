@@ -52,5 +52,4 @@ function removeItemFromCart(event) {
   }
 }
 
-
 renderCartContents();
