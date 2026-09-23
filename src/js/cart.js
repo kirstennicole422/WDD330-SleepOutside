@@ -18,6 +18,7 @@ function renderCartContents() {
     document.querySelector(".cartFooter").classList.remove("hide");
   } else {
     document.querySelector(".product-list").innerHTML = "";
+    // document.querySelector(".cartTotal").innerHTML = "";
     document.querySelector(".cartFooter").classList.add("hide");
   }
 

@@ -115,7 +115,7 @@ button {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .cartFooter {
