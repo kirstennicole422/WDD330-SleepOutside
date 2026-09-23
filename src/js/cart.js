@@ -5,19 +5,31 @@ loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("customer-cart") || [];
-  if (cartItems) {
+  const productList = document.querySelector(".product-list");
+  productList.innerHTML = "";
+
+  if (cartItems.length > 0) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+ 
+    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+
+    document.querySelector(".cartTotal").textContent = `Total: $${total.toFixed(2)}`;
+    document.querySelector(".cartFooter").classList.remove("hide");
+  } else {
+    document.querySelector(".product-list").innerHTML = "";
+    document.querySelector(".cartFooter").classList.add("hide");
   }
 
   removeFeature();
 }
 
 function cartItemTemplate(item) {
+  const imageSrc = item.Images?.PrimaryMedium;
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${imageSrc}"
       alt="${item.Name}"
     />
   </a>
@@ -51,6 +63,5 @@ function removeItemFromCart(event) {
     renderCartContents();
   }
 }
-
 
 renderCartContents();
